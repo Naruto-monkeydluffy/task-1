@@ -1,0 +1,26 @@
+FROM ubuntu
+
+RUN apt update -y
+
+RUN apt install nginx -y 
+
+COPY index.html /var/opt/nginx
+
+CMD ["nginx", "-g", "daemon off;"]
+
+
+services:
+  nginx1:
+    image: sidd:v3
+    ports:
+      - "3000:80"
+    container_name: luffy
+
+
+ubuntu@ip-172-31-93-7:~$ docker pull sid9908/sai:siddv3
+siddv3: Pulling from sid9908/sai
+Digest: sha256:07575ae3d70b745d6ccb8679a0b50e9f1ffa3c0ad16ee97307bc75ed82be9949
+Status: Image is up to date for sid9908/sai:siddv3
+docker.io/sid9908/sai:siddv3
+
+COPY file:874793c465de676b2005d8112f8eefcb7cf51cb14333184638d1124578135b58 in /var/opt/nginx 
